@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
+import "./HomePage.css";
 
 const HomePage = () => {
   const [code, setCode] = useState({
@@ -13,7 +14,7 @@ using namespace std;
 void dijkstra(vector<vector<pair<int, int>>> &graph, int source) {
   int V = graph.size();
   vector<int> dist(V, INF);
-  priority_queue<pair<int, int>>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+  priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
   dist[source] = 0;
   pq.push({0, source});
 
@@ -33,9 +34,9 @@ void dijkstra(vector<vector<pair<int, int>>> &graph, int source) {
   }
 
   // Print shortest distances from source to all vertices
-  cout << "Shortest distances from source " << source << ":";
+  cout << "Shortest distances from source " << source << ":" << endl;
   for (int i = 0; i < V; ++i)
-    cout << "Vertex " << i << ": " << dist[i] << "";
+    cout << "Vertex " << i << ": " << dist[i] << endl;
 }
 
 int main() {
@@ -56,12 +57,12 @@ int main() {
 }`,
   });
 
-  const [output, setOutput] = useState('');
+  const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState('cpp');
+  const [selectedLanguage, setSelectedLanguage] = useState("cpp");
 
-  const handleCodeChange = e => {
-    setCode({...code, [selectedLanguage]: e.target.value});
+  const handleCodeChange = (e) => {
+    setCode({ ...code, [selectedLanguage]: e.target.value });
   };
 
   const runCode = async () => {
@@ -70,29 +71,29 @@ int main() {
       const response = await fetch(
         `http://localhost:3001/api/${selectedLanguage}`,
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({code: code[selectedLanguage]}),
-        },
+          body: JSON.stringify({ code: code[selectedLanguage] }),
+        }
       );
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
 
       const result = await response.json();
       console.log(result);
 
-      if (result.status === 'success') {
+      if (result.status === "success") {
         setOutput(result.stdout);
       } else {
         setOutput(result.stderr || result.message);
       }
     } catch (error) {
-      console.error('Error:', error);
-      setOutput('Error executing code. Please check console for details.');
+      console.error("Error:", error);
+      setOutput("Error executing code. Please check console for details.");
     } finally {
       setLoading(false);
     }
@@ -129,17 +130,18 @@ int main() {
           <select
             id="language"
             value={selectedLanguage}
-            onChange={e => setSelectedLanguage(e.target.value)}>
+            onChange={(e) => setSelectedLanguage(e.target.value)}
+          >
             <option value="cpp">C++</option>
           </select>
         </div>
         <button onClick={runCode} disabled={loading}>
-          {loading ? 'Running...' : 'Run Code'}
+          {loading ? "Running..." : "Run Code"}
         </button>
       </section>
       <section className="output">
         <h2>Output</h2>
-        <pre>{output}</pre>
+        <pre className="pretag">{output}</pre>
       </section>
       <section className="applications">
         <h2>Applications</h2>

@@ -16,74 +16,25 @@
   width: 100%;
 }
 
-.main-content {
-  flex: 1;
-  padding: 20px;
-  width: 100%;
-  max-width: 800px;
-}
-
-.intro,
-.code-editor,
-.output,
-.applications {
-  margin-bottom: 20px;
-}
-
-.code-editor {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.code-editor textarea {
-  width: 100%;
-  max-width: 800px;
-  height: 1000px;
-  background-color: #333;
-  color: white;
-  border: 1px solid #555;
-  padding: 10px;
-  font-family: monospace;
-  overflow: auto;
-}
-
-.language-select {
-  margin-top: 10px;
-}
-
-.language-select select {
-  padding: 5px;
-  background-color: #333;
-  color: white;
-  border: 1px solid #555;
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:disabled {
-  background-color: #888;
-}
-
-.output pre {
-  background-color: #333;
-  padding: 10px;
-  text-align: left;
-  overflow-x: auto;
-}
-
 .footer {
   background-color: #333;
   padding: 10px;
   width: 100%;
   text-align: center;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
 
 /* PathfindingVisualizer styles */
@@ -174,3 +125,5 @@ button:disabled {
     background-color: rgb(255, 254, 106);
   }
 }
+
+/* Additional styles can be added as needed */

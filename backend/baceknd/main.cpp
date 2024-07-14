@@ -29,9 +29,9 @@ void dijkstra(vector<vector<pair<int, int>>> &graph, int source) {
   }
 
   // Print shortest distances from source to all vertices
-  cout << "Shortest distances from source " << source << ":";
+  cout << "Shortest distances from source " << source << ":" << endl;
   for (int i = 0; i < V; ++i)
-    cout << "Vertex " << i << ": " << dist[i] << "";
+    cout << "Vertex " << i << ": " << dist[i] << endl;
 }
 
 int main() {
